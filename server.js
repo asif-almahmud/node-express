@@ -15,7 +15,14 @@ app.get("/new-page(.html)?", (req, res) => {
 
 //-> Redirecting to another page
 app.get("/old-page(.html)?", (req, res) => {
-   res.redirect(301, "/new-page.html"); // 302 is the default status code express will send, but to make it clear to the search engines we will set the status code as 301 so that the search engines might understand this redirecting is permenant, we don't have the content for "/old-page.html" route any more
+   res.redirect(301, "/new-page.html");
+});
+
+//-> Catching all routes that are not handled before and responding with a custom 404 page
+app.get("/*", (req, res) => {
+   // asteric says to allow everything after the slash
+   // as express works like water fall, so the unhandled requests will come to this point eventually
+   res.status(404).sendFile(path.join(__dirname, "views", "404.html")); // we are manually sending the 404 status code otherwise express will send 200 ok as express is now able to catch any request that is not handled before
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
