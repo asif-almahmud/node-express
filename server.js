@@ -18,6 +18,24 @@ app.get("/old-page(.html)?", (req, res) => {
    res.redirect(301, "/new-page.html");
 });
 
+//-> Chaining route handlers
+const one = (req, res, next) => {
+   console.log("one");
+   next();
+};
+
+const two = (req, res, next) => {
+   console.log("two");
+   next();
+};
+
+const three = (req, res) => {
+   console.log("three");
+   res.send("Finished!");
+};
+
+app.get("/chain(.html)?", [one, two, three]); // When the route get hit the handlers start to run one after another. The convention is all the handlers before the last one are called middlewares and the last handler which terminates the process is called controller
+
 //-> Catching all routes that are not handled before and responding with a custom 404 page
 app.get("/*", (req, res) => {
    // asteric says to allow everything after the slash
