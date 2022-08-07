@@ -4,6 +4,16 @@ const path = require("path");
 
 const PORT = process.env.PORT || 3500;
 
+//-> There are three types off middlewares - built-in middlewares, custom middlewares and third party middlewares
+
+//-> app.use()
+//-> We often use app.use() to apply middlewares to all routes that are coming in, i.e. if a middleware using app.use() is written after a route but before all other routes then this middleware will not be applied for the first route but will be applied for all other routes
+
+//-> Examples of built-in middlewares:
+app.use(express.urlencoded({ extended: false })); // built-in middleware to handle urlencoded data, in other words to handle form data
+app.use(express.json()); // express.json() is also a built-in middleware which parses incoming requests with JSON payloads and is based on body-parser
+app.use(express.static(path.join(__dirname, "/public"))); // express.static() middleware is used to make the static files readily available for the coming routes. Static files are like - css files, images, texts
+
 app.get("/", (req, res) => {
    //    res.sendFile("./views/index.html", { root: __dirname }); // this is one way of serving a file
    res.sendFile(path.join(__dirname, "views", "index.html")); // this is another way of serving a file
