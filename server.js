@@ -77,14 +77,25 @@ const three = (req, res) => {
 
 app.get("/chain(.html)?", [one, two, three]); // When the route get hit the handlers start to run one after another. The convention is all the handlers before the last one are called middlewares and the last handler which terminates the process is called controller
 
-//-> Catching all routes that are not handled before and responding with a custom 404 page
-app.get("/*", (req, res) => {
+//-> Catching all routes that are not handled before and responding with custom responses
+app.all("*", (req, res) => {
+   // app.all() will allow us to work with any method
+   // app.all() allows us to use regex for routes
    // asteric says to allow everything after the slash
    // as express works like water fall, so the unhandled requests will come to this point eventually
-   res.status(404).sendFile(path.join(__dirname, "views", "404.html")); // we are manually sending the 404 status code otherwise express will send 200 ok as express is now able to catch any request that is not handled before
+
+   res.status(404); // we are manually sending the 404 status code otherwise express will send 200 ok as express is now able to catch any request that is not handled before
+
+   if (req.accepts("html")) {
+      res.sendFile(path.join(__dirname, "views", "404.html"));
+   } else if (req.accepts("json")) {
+      res.json({ error: "404 Not Found" });
+   } else {
+      res.type("txt").send("404 Not Found");
+   }
 });
 
-//-> custom error handling
+//-> custom error handling (for example CORS error will be handed)
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
