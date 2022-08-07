@@ -30,3 +30,11 @@
 20220807	11:25:37	e9c5f45d-0427-42c4-84fa-2fedfc47c0f0	requested method: GET	requested from where: https://www.google.com	rquested url: /
 20220807	11:26:50	ffd6b04c-6414-4c68-b077-0fdea865e3fb	requested method: GET	requested from where: https://www.google.com	rquested url: /
 20220807	11:27:38	1420fa53-bbdb-4149-8caa-94710fea5152	requested method: GET	requested from where: undefined	rquested url: /
+20220807	12:27:48	c241efd4-665d-4fd1-8522-9a51b0873f79	requested method: GET	requested from where: undefined	rquested url: /
+20220807	12:27:48	66bfc8ce-6030-482d-b19f-21b599e861bd	requested method: GET	requested from where: undefined	rquested url: /favicon.ico
+20220807	12:29:26	bedd370e-ce80-4299-98cc-ba1950656e70	requested method: GET	requested from where: undefined	rquested url: /
+20220807	12:29:26	f65291d1-9b37-4446-8db6-960c4c634f84	requested method: GET	requested from where: undefined	rquested url: /css/style.css
+20220807	12:29:26	9dfe71a4-4ba3-4b00-b7ae-db4d66136c6f	requested method: GET	requested from where: undefined	rquested url: /favicon.ico
+20220807	12:45:57	155e6c99-d0a1-4595-8fe5-00f475a4c454	requested method: GET	requested from where: undefined	rquested url: /
+20220807	12:46:15	a07878f2-b0dc-499f-b7bf-c27664e0fb19	requested method: GET	requested from where: undefined	rquested url: /
+20220807	12:46:15	b3d3a811-610a-46fe-871f-7010fb3575ac	requested method: GET	requested from where: undefined	rquested url: /css/style.css

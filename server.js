@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 const { logger } = require("./middleware/logEvents");
+const errorHandler = require("./middleware/errorHandler");
 
 const PORT = process.env.PORT || 3500;
 
@@ -24,8 +25,9 @@ const corsOptions = {
    origin: (origin, callback) => {
       // here origin parameter is for whoever have requested
       console.log({ origin });
-      if (whitelist.indexOf(origin) !== -1) {
+      if (whitelist.indexOf(origin) !== -1 || !origin) {
          // this condition makes sure - if the domain is in the whitelist then it will be let pass by calling the callback and passing true as the second parameter of the callback
+         // we need to add the "!origin" condition for development time, but before production we will have to remove it
 
          callback(null, true);
       } else {
@@ -81,5 +83,8 @@ app.get("/*", (req, res) => {
    // as express works like water fall, so the unhandled requests will come to this point eventually
    res.status(404).sendFile(path.join(__dirname, "views", "404.html")); // we are manually sending the 404 status code otherwise express will send 200 ok as express is now able to catch any request that is not handled before
 });
+
+//-> custom error handling
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
