@@ -1,0 +1,4 @@
+20220807	10:02:24	ea400f2e-b04e-4f43-9ecd-caec38fa79a2	requested method: GET	requested from where: undefined	rquested url: /
+20220807	10:02:24	d5444aee-89bb-4720-863a-1e774adb8898	requested method: GET	requested from where: undefined	rquested url: /css/style.css
+20220807	10:02:50	ed6d2786-91a1-45d3-8072-071bd38f69a2	requested method: GET	requested from where: undefined	rquested url: /jghvghjv
+20220807	10:02:50	29fa6f82-0ae4-46fb-b515-9058ab02b15f	requested method: GET	requested from where: undefined	rquested url: /css/style.css

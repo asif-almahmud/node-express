@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const logEvents = require("./middleware/logEvents");
 
 const PORT = process.env.PORT || 3500;
 
@@ -9,10 +10,21 @@ const PORT = process.env.PORT || 3500;
 //-> app.use()
 //-> We often use app.use() to apply middlewares to all routes that are coming in, i.e. if a middleware using app.use() is written after a route but before all other routes then this middleware will not be applied for the first route but will be applied for all other routes
 
+//-> Example of custom middleware
+app.use((req, res, next) => {
+   logEvents(
+      `requested method: ${req.method}\trequested from where: ${req.headers.origin}\trquested url: ${req.url}`,
+      "reqLog.txt"
+   );
+   console.log(`requested method: ${req.method}, requested path: ${req.path}`);
+   next();
+});
+
 //-> Examples of built-in middlewares:
 app.use(express.urlencoded({ extended: false })); // built-in middleware to handle urlencoded data, in other words to handle form data
 app.use(express.json()); // express.json() is also a built-in middleware which parses incoming requests with JSON payloads and is based on body-parser
 app.use(express.static(path.join(__dirname, "/public"))); // express.static() middleware is used to make the static files readily available for the coming routes. Static files are like - css files, images, texts
+// note: built-in middlewares do not need next() call, it is already built into that
 
 app.get("/", (req, res) => {
    //    res.sendFile("./views/index.html", { root: __dirname }); // this is one way of serving a file
