@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const logEvents = require("./middleware/logEvents");
+const { logger } = require("./middleware/logEvents");
 
 const PORT = process.env.PORT || 3500;
 
@@ -11,14 +11,7 @@ const PORT = process.env.PORT || 3500;
 //-> We often use app.use() to apply middlewares to all routes that are coming in, i.e. if a middleware using app.use() is written after a route but before all other routes then this middleware will not be applied for the first route but will be applied for all other routes
 
 //-> Example of custom middleware
-app.use((req, res, next) => {
-   logEvents(
-      `requested method: ${req.method}\trequested from where: ${req.headers.origin}\trquested url: ${req.url}`,
-      "reqLog.txt"
-   );
-   console.log(`requested method: ${req.method}, requested path: ${req.path}`);
-   next();
-});
+app.use(logger);
 
 //-> Examples of built-in middlewares:
 app.use(express.urlencoded({ extended: false })); // built-in middleware to handle urlencoded data, in other words to handle form data
