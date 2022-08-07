@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3500;
 //-> There are three types off middlewares - built-in middlewares, custom middlewares and third party middlewares
 
 //-> app.use()
-//-> We often use app.use() to apply middlewares to all routes that are coming in, i.e. if a middleware using app.use() is written after a route but before all other routes then this middleware will not be applied for the first route but will be applied for all other routes
+//-> We often use app.use() to apply middlewares to all routes that are coming in, i.e. if a middleware using app.use() is written after a route but before all other routes then this middleware will not be applied for the first route but will be applied for all other routes. We can also use app.use() to prefix a route path and then pass a router object, and thus it will make our routes handling very easy.
 
 //-> Example of custom middleware:
 app.use(logger);
@@ -42,22 +42,13 @@ app.use(cors(corsOptions)); // CORS stands for Cross Origin Resource Sharing
 //-> Examples of built-in middlewares:
 app.use(express.urlencoded({ extended: false })); // built-in middleware to handle urlencoded data, in other words to handle form data
 app.use(express.json()); // express.json() is also a built-in middleware which parses incoming requests with JSON payloads and is based on body-parser
-app.use(express.static(path.join(__dirname, "/public"))); // express.static() middleware is used to make the static files readily available for the coming routes. Static files are like - css files, images, texts
+app.use(express.static(path.join(__dirname, "/public"))); // express.static() middleware is used to make the static files readily available for the coming routes. Static files are like - css files, images, texts. The default path prefix for this is "/". That means under the hood we are using - app.use("/", express.static(path.join(__dirname, "/public"))). So to make sure other routes that starts specificly with other things need to be passed as the first parameter
+app.use("/subdir", express.static(path.join(__dirname, "/public")));
 // note: built-in middlewares do not need next() call, it is already built into that
 
-app.get("/", (req, res) => {
-   //    res.sendFile("./views/index.html", { root: __dirname }); // this is one way of serving a file
-   res.sendFile(path.join(__dirname, "views", "index.html")); // this is another way of serving a file
-});
-
-app.get("/new-page(.html)?", (req, res) => {
-   res.sendFile(path.join(__dirname, "views", "new-page.html"));
-});
-
-//-> Redirecting to another page
-app.get("/old-page(.html)?", (req, res) => {
-   res.redirect(301, "/new-page.html");
-});
+//-> Using the router object provided by express
+app.use("/", require("./routes/root"));
+app.use("/subdir", require("./routes/subdir"));
 
 //-> Chaining route handlers
 const one = (req, res, next) => {
