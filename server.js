@@ -49,6 +49,7 @@ app.use("/subdir", express.static(path.join(__dirname, "/public")));
 //-> Using the router object provided by express
 app.use("/", require("./routes/root"));
 app.use("/subdir", require("./routes/subdir"));
+app.use("/employees", require("./routes/api/employees"));
 
 //-> Chaining route handlers
 const one = (req, res, next) => {

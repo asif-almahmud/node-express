@@ -80,3 +80,7 @@
 20220807	22:23:17	6df2ab2f-f4b6-4561-8084-b08bbd099a63	requested method: GET	requested from where: undefined	rquested url: /new-page
 20220807	22:23:17	6025f666-f574-4bdb-a9e5-82a0805256d2	requested method: GET	requested from where: undefined	rquested url: /css/style.css
 20220807	22:23:17	49122183-ada6-47ab-8cc8-0018d50a876a	requested method: GET	requested from where: undefined	rquested url: /img/img1.jpg
+20220808	09:45:54	aa193b1e-4124-4f2a-bed5-b5f91940c579	requested method: GET	requested from where: undefined	rquested url: /employees
+20220808	09:47:45	d446a548-ebb2-4c5e-80c9-f624c75bd9b1	requested method: POST	requested from where: undefined	rquested url: /employees
+20220808	09:51:10	ac3944f4-1ee3-479e-9858-3e1112644a81	requested method: PUT	requested from where: undefined	rquested url: /employees
+20220808	09:52:20	434c2ecf-8ecf-425e-9ed4-3a1c809d8ec0	requested method: DELETE	requested from where: undefined	rquested url: /employees
