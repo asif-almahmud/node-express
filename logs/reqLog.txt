@@ -84,3 +84,5 @@
 20220808	09:47:45	d446a548-ebb2-4c5e-80c9-f624c75bd9b1	requested method: POST	requested from where: undefined	rquested url: /employees
 20220808	09:51:10	ac3944f4-1ee3-479e-9858-3e1112644a81	requested method: PUT	requested from where: undefined	rquested url: /employees
 20220808	09:52:20	434c2ecf-8ecf-425e-9ed4-3a1c809d8ec0	requested method: DELETE	requested from where: undefined	rquested url: /employees
+20220808	10:07:43	7ed04397-a009-4917-b177-8b6e272b7f1e	requested method: GET	requested from where: undefined	rquested url: /employees
+20220808	10:07:43	a32435e1-c16e-48cb-92dc-d00f826dc614	requested method: GET	requested from where: undefined	rquested url: /favicon.ico
